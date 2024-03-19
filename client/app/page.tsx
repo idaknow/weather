@@ -26,8 +26,8 @@ export default function Home() {
     key: string | number | null,
     useCache: boolean = true
   ) => {
-    console.log("on select change");
     setIsError(false);
+    setIsLoading(true);
 
     const location = locations.find((loc) => loc.value === key);
     if (!location) {
@@ -35,11 +35,9 @@ export default function Home() {
       return;
     }
 
-    setIsLoading(true);
     getCurrentWeather(location.lon, location.lat, useCache)
       .then((response: any) => {
-        console.log(response);
-        // TODO: type it
+        // Future work: type the response!
         if (response.cod !== 200 || !response.main) {
           setIsError(true);
           return;

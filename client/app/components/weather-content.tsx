@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { faRefresh } from "@fortawesome/free-solid-svg-icons/faRefresh";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Skeleton } from "@nextui-org/react";
 
 import { WeatherData } from "../constants/types";
 
@@ -38,11 +37,7 @@ export const WeatherContent = ({
   }
 
   if (isLoading) {
-    return (
-      <div className="flex items-center space-x-4">
-        <Skeleton className="h-12 w-12 rounded-full" />
-      </div>
-    );
+    return <p>Loading...</p>;
   }
 
   // note: just showing basic information: location, icon and temperature

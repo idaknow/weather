@@ -17,7 +17,6 @@ app.get("/weather", async (req, res) => {
     );
 
     const weatherJson = await weather.json();
-    console.log("request !!!");
     res.json({ cod: weather.cod, ...weatherJson }); // send code back with response object
   } catch (error) {
     // Future work: capture the error somewhere like sentry or datadog and return a cleaner version
@@ -28,3 +27,5 @@ app.get("/weather", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
+
+module.exports = app;
