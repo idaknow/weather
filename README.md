@@ -2,6 +2,12 @@
 
 Requirements: [REQUIREMENTS.md](./REQUIREMENTS.md)
 
+Frontend (/client) deployment: https://weather-client-flame.vercel.app/
+
+Backend (/server) deployment: https://weather-server-indol.vercel.app/
+
+- Example: `https://weather-server-indol.vercel.app/weather?lon=-123.113952&lat=49.260872&units=metric&useCache=false`
+
 ## Development
 
 To run this code locally:
