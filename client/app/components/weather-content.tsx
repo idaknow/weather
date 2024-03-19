@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { faRefresh } from "@fortawesome/free-solid-svg-icons/faRefresh";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { WeatherData } from "../constants/types";
@@ -18,7 +16,6 @@ type WeatherContentProps = {
   locationName: string | null;
   weatherData: WeatherData | null;
   isLoading: boolean;
-  onRefresh: () => void;
 };
 
 export const WeatherContent = ({
@@ -26,7 +23,6 @@ export const WeatherContent = ({
   locationName,
   weatherData,
   isLoading,
-  onRefresh,
 }: WeatherContentProps) => {
   if (isError) {
     return <p>There was an error loading weather data. Please try again.</p>;
@@ -36,6 +32,7 @@ export const WeatherContent = ({
     return <p>No location selected.</p>;
   }
 
+  // Future work: make the loading state into an animation
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -48,10 +45,6 @@ export const WeatherContent = ({
         <h2 className="font-semibold scroll-m-20 pb-2 tracking-tight first:mt-0">
           Current weather in ✨{locationName}✨
         </h2>
-
-        <Button className="h-8 w-6" variant="ghost" onClick={onRefresh}>
-          <FontAwesomeIcon icon={faRefresh} />
-        </Button>
       </div>
 
       <div className="flex justify-center items-center m-5">

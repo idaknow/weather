@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { WeatherContent } from "./components/weather-content";
 import { locations, weatherToIcon } from "./constants/locations";
-import { WeatherData } from "./constants/types";
+import { WeatherData, WeatherResponse } from "./constants/types";
 import { getCurrentWeather } from "./weather-api";
 
 export default function Home() {
@@ -36,7 +36,7 @@ export default function Home() {
     }
 
     getCurrentWeather(location.lon, location.lat, useCache)
-      .then((response: any) => {
+      .then((response: WeatherResponse) => {
         // Future work: type the response!
         if (response.cod !== 200 || !response.main) {
           setIsError(true);
@@ -50,7 +50,10 @@ export default function Home() {
           temperature: response.main.temp,
         });
       })
-      .catch(() => clearData()) // note: no real error handling, usually print a generic message to page
+      .catch(() => {
+        setIsError(true);
+        clearData();
+      }) // note: no real error handling, usually print a generic message to page
       .finally(() => setIsLoading(false));
   };
 
@@ -78,7 +81,6 @@ export default function Home() {
               locationName={locationName}
               weatherData={weatherData}
               isLoading={isLoading}
-              onRefresh={() => onSelectionChange(locationName, false)}
             />
           </CardContent>
         </Card>

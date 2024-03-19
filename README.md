@@ -10,7 +10,7 @@ Backend (/server) deployment: https://weather-server-indol.vercel.app/
 
 ## Development
 
-To run this code locally:
+### To run this code locally:
 
 1. Clone this repository `git clone git@github.com:idaknow/weather.git` or via HTTPs. Note, to clone via SSH you need to have local keys generated. See https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent for more information.
 2. Create a weather api account by following the steps at https://home.openweathermap.org/users/sign_up
@@ -21,3 +21,19 @@ To run this code locally:
 7. Navigate to `localhost:3000/` to view the weather :~)
 
 If you have any issues with installation, please do not hesitate to contact me via e-mail.
+
+### Design decisions
+
+Assumptions:
+
+- hardcoded 3 cities for simplicity
+- only show city, weather icon and temperature for simplicity
+- units are hardcoded to metric, as that is my default
+
+Things that were not implemented because of time constraints:
+
+- redux / react context api - passed the state to `WeatherContext` using props
+- loading animation - just used a `<p>Loading...</p>` which is not very smooth. If I had more time I would have used `Suspense` with a `fallback` to a loading `Skeleton`.
+- variety of error handling - returned a generic response for any non-200 status code from the backend.
+- no error handling on frontend with combobox. Assumed it handled this, but this could have been accounted for.
+- refresh button - but I did implement a use-cache flag that you can hook into in the server.
