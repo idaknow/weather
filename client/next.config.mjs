@@ -1,14 +1,13 @@
 /** @type {import('next').NextConfig} */
 
-const SERVER_HOST = process.env.SERVER_HOST;
-const SERVER_PORT = process.env.SERVER_PORT;
+const SERVER_URL = process.env.SERVER_URL;
 
 const nextConfig = {
   async rewrites() {
     return [
       {
         source: "/api/:path*",
-        destination: `http://${SERVER_HOST}:${SERVER_PORT}/:path*`, // Proxy to Backend
+        destination: `${SERVER_URL}/:path*`, // Proxy to Backend
       },
     ];
   },
