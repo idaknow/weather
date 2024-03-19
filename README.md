@@ -14,10 +14,10 @@ Backend (/server) deployment: https://weather-server-indol.vercel.app/
 
 1. Clone this repository `git clone git@github.com:idaknow/weather.git` or via HTTPs. Note, to clone via SSH you need to have local keys generated. See https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent for more information.
 2. Create a weather api account by following the steps at https://home.openweathermap.org/users/sign_up
-3. Retrieve or generate an api key: https://home.openweathermap.org/api_keys. Note, if you do not want to use the default API key from here, if you generate a new API key it can take up to 2 hours to register. Code this value.
-4. Open this repository `cd weather`.
+3. Retrieve or generate an api key: https://home.openweathermap.org/api_keys. Note, if you do not want to use the default API key from here, if you generate a new API key it can take up to 2 hours to register. Copy this value.
+4. Open this repo: `cd weather`.
 5. Open the backend: `cd server`. Install dependencies: `npm install`. Duplicate the `.env.example` file and rename it to `.env`. Paste the API Key from Step 3 as the value. Run the backend: `npm run dev`.
-6. In a new tab, open the frontend: `cd client`. Duplicate the `.env.local.example` file and rename it to `.env.local`. Install dependencies: `npm install`. Run the application: `npm run dev`.
+6. In a new tab, open the frontend: `cd client`. Duplicate the `.env.local.example` file and rename it to `.env.local`. Feel free to modify the host or port in this file. Install dependencies: `npm install`. Run the application: `npm run dev`.
 7. Navigate to `localhost:3000/` to view the weather :~)
 
 If you have any issues with installation, please do not hesitate to contact me via e-mail.
@@ -35,7 +35,7 @@ Things that were not implemented because of time constraints:
 - redux / react context api - passed the state to `WeatherContext` using props
 - loading animation - just used a `<p>Loading...</p>` which is not very smooth. If I had more time I would have used `Suspense` with a `fallback` to a loading `Skeleton`.
 - variety of error handling - returned a generic response for any non-200 status code from the backend.
-- no error handling on frontend with combobox. Assumed it handled this, but this could have been accounted for.
+- no error handling on frontend with combobox. Assumed it handled this, but this could be added.
 - refresh button - but I did implement a use-cache flag that you can hook into in the server.
 
 ## How I would productionise this
